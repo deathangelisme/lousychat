@@ -1,0 +1,25 @@
+<template name="layout">
+
+  <!-- the navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      {{> navbar}}
+    </div>
+  </div>
+
+  <!-- the alerts -->
+  <div id="alerts">
+  </div>
+
+  <!-- main content -->
+  <div id="main">
+    <div class="container">
+      {{> yield}}
+    </div>
+  </div>
+
+  <!-- reusables, modals -->
+  <div>
+    {{> login}}
+  </div>
+</template>
