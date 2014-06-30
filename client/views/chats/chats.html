@@ -1,17 +1,2 @@
 <template name="chats">
-	<div id="chatsCont" style="height: 440px; overflow-x: hidden; max-height: 1000px;">
-		{{#each chatentries}}
-			<div>{{chatname}} : {{chatmsg}}</div>
-		{{/each}}
-	</div>
-	{{#if currentUser}}
-		<div id="chatInput">
-			<div class="form-group">
-		    <div class="col-lg-12">
-		    	<textarea id="chatTextarea" class="form-control col-lg-12" rows="3"></textarea>
-		      <button type="submit" id="sendChatBtn" class="btn btn-default">Send</button>
-		    </div>
-	  	</div>
-		</div>
-	{{/if}}
 </template>

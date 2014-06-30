@@ -8,13 +8,20 @@
   </div>
 
   <!-- the alerts -->
-  <div id="alerts">
+  <div id="alertCont">
   </div>
 
   <!-- main content -->
   <div id="main">
     <div class="container">
-      {{> yield}}
+      <div id="contentCont" class="col-sm-9">
+        {{> yield}}
+      </div>
+      <div id="chatListCont" class="col-sm-3">
+        {{#if currentUser}}
+          {{> chatlist}}
+        {{/if}}
+      </div>
     </div>
   </div>
 

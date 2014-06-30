@@ -1,0 +1,45 @@
+<template name="chat">
+	<style>
+		#userChatCont {
+			height: 440px;
+			overflow: auto;
+		}
+
+		.alignLeft {
+			text-align: left;
+		}
+		.alignRight {
+			text-align: right;
+		}
+
+		.created_time {
+			font-size: 0.7em;
+		}
+	</style>
+	<div class="col-xs-12">
+		<div id="userChatHeader">
+			<h3>Your recent chats with {{username}}</h3>
+		</div>
+		<div id="userChatCont">
+			{{#each userchats}}
+				<div class="{{#if isMyChat sender}}alignLeft{{else}}alignRight{{/if}}">
+					<span>
+						{{#if isMyChat sender}}
+							<span>You</span>
+						{{else}}
+							<strong>{{sender}}</strong>
+						{{/if}}
+					</span>: <span>{{msg}}</span>&nbsp;<time class="created_time timeago" title="{{get_human_date}}" datetime="{{created_at}}">({{get_human_date}})</time>
+				</div>
+			{{/each}}
+		</div>
+		<div id="chatInputCont">
+			<div class="input-group input-group-lg">
+	      <input type="text" id="sendChatInput" class="form-control">
+	      <span class="input-group-btn">
+	        <button id="sendChatBtn" class="btn btn-default" type="button">Send</button>
+	      </span>
+	    </div>
+		</div>
+	</div>
+</template>

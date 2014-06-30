@@ -15,4 +15,12 @@ if(Meteor.users.find().count() === 0) {
 			status: -1
 		}
 	});
+	Accounts.createUser({
+		username: "test3",
+		password: "hahaha",
+		email: "shabriwa.shalat+test3@gmail.com",
+		profile: {
+			status: -1
+		}
+	});
 }

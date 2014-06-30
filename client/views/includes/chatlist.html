@@ -1,0 +1,16 @@
+<template name="chatlist">
+	<style>
+		#chatListCont .online {
+			color: green;
+		}
+		#chatListCont .offline {
+			color: #ccc;
+		}
+		#chatListCont .user_list {
+			padding: 10px 0px;
+		}
+	</style>
+	{{#each userslist}}
+		<div class="user_list {{isTheUser username}}"><span class="glyphicon glyphicon-user {{ userStatus profile.status }} "></span>&nbsp;<a href="/chat/{{username}}">{{username}}</a></div>
+	{{/each}}
+</template>
