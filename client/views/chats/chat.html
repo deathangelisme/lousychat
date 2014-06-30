@@ -1,7 +1,7 @@
 <template name="chat">
 	<style>
 		#userChatCont {
-			height: 440px;
+			height: 420px;
 			overflow: auto;
 		}
 
@@ -14,6 +14,10 @@
 
 		.created_time {
 			font-size: 0.7em;
+		}
+
+		#chatInputCont {
+			margin: 20px 0px;
 		}
 	</style>
 	<div class="col-xs-12">
@@ -31,6 +35,7 @@
 						{{/if}}
 					</span>: <span>{{msg}}</span>&nbsp;<span class="created_time timeago" data-livestamp="{{created_at}}"></span>
 				</div>
+				{{refreshChat}}
 			{{/each}}
 		</div>
 		<div id="chatInputCont">

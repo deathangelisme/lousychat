@@ -10,17 +10,16 @@ function sendChatMsg() {
 		msg : $('#sendChatInput').val(),
 			created_at : (new Date()).toISOString()
 		});
-		refreshChat();
+		Template.chat.refreshChat();
 	}
 }
 
-refreshChat = function() {
+Template.chat.refreshChat = function() {
 	setTimeout(function() {
 		$('#sendChatInput').val('');
 		$('#userChatCont').scrollTop($('#userChatCont')[0].scrollHeight);
 	}, 100);
 }
-
 
 Template.chat.isMyChat = function(sender, username) {
 	return sender == Meteor.user().username;
