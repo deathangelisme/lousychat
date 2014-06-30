@@ -14,7 +14,6 @@ refreshChat = function() {
 	Meteor.defer(function() {
 		$("#sendChatInput").val("");
 		$("#userChatCont").scrollTop(999999);
-		$("#userChatCont").find(".timeago").timeago();
 	})
 }
 
@@ -40,9 +39,4 @@ Template.chat.events({
 
 Template.chat.rendered = function() {
 	refreshChat();
-
-	clearInterval(timeagoRefresh);
-	timeagoRefresh = setInterval(function() {
-		$("#userChatCont").find(".timeago").timeago();
-	}, 60000)
 }

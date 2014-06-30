@@ -6,7 +6,7 @@
       "iron-router": {},
       "iron-router-progress": {},
       "moment": {},
-      "timeago": {}
+      "livestamp": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -29,10 +29,10 @@
         "tag": "v2.6.0",
         "commit": "26156df681750fd6e6ed77043eef32b6653ebbdf"
       },
-      "timeago": {
-        "git": "https://github.com/Differential/timeago.git",
-        "tag": "v0.0.4",
-        "commit": "60914e8ea3d930febc724febdf137bcd818cb49d"
+      "livestamp": {
+        "git": "https://github.com/colllin/meteor-livestamp.git",
+        "tag": "v1.1.2-3",
+        "commit": "d161b9de53d7032511ecaa13486b6b5cb11f71f3"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

@@ -29,7 +29,7 @@
 						{{else}}
 							<strong>{{sender}}</strong>
 						{{/if}}
-					</span>: <span>{{msg}}</span>&nbsp;<time class="created_time timeago" title="{{get_human_date}}" datetime="{{created_at}}">({{get_human_date}})</time>
+					</span>: <span>{{msg}}</span>&nbsp;<span class="created_time timeago" data-livestamp="{{created_at}}"></span>
 				</div>
 			{{/each}}
 		</div>
