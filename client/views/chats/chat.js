@@ -1,20 +1,24 @@
+/* TODO
+** strip html tags
+**/
 
-// to be moved to router
-function sendChatMsg(sender, recipient, msg) {
-	Chats.insert({
+function sendChatMsg() {
+	if($('#sendChatInput').val().length > 0) {
+		Chats.insert({
 		sender : Meteor.user().username, 
 		recipient : Session.get('chatPartner'), 
-		msg : $("#sendChatInput").val(),
-		created_at : (new Date()).toISOString()
-	});
-	refreshChat();
+		msg : $('#sendChatInput').val(),
+			created_at : (new Date()).toISOString()
+		});
+		refreshChat();
+	}
 }
 
 refreshChat = function() {
-	Meteor.defer(function() {
-		$("#sendChatInput").val("");
-		$("#userChatCont").scrollTop(999999);
-	})
+	setTimeout(function() {
+		$('#sendChatInput').val('');
+		$('#userChatCont').scrollTop($('#userChatCont')[0].scrollHeight);
+	}, 100);
 }
 
 
