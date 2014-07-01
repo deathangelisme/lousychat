@@ -4,7 +4,8 @@ if(Meteor.users.find().count() === 0) {
 		password: "hahaha",
 		email: "shabriwa.shalat+test1@gmail.com",
 		profile: {
-			status: -1
+			chat_status: -1,
+			is_typing_to: undefined
 		}
 	});
 	Accounts.createUser({
@@ -12,7 +13,8 @@ if(Meteor.users.find().count() === 0) {
 		password: "hahaha",
 		email: "shabriwa.shalat+test2@gmail.com",
 		profile: {
-			status: -1
+			chat_status: -1,
+			is_typing_to: undefined
 		}
 	});
 	Accounts.createUser({
@@ -20,7 +22,8 @@ if(Meteor.users.find().count() === 0) {
 		password: "hahaha",
 		email: "shabriwa.shalat+test3@gmail.com",
 		profile: {
-			status: -1
+			chat_status: -1,
+			is_typing_to: undefined
 		}
 	});
 }

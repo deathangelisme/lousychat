@@ -4,34 +4,29 @@
 
 Router.configure({
   layoutTemplate: 'layout',
-  // loadingTemplate: 'loading',
+  //loadingTemplate: 'loading',
   // waitOn: function() { 
   //   return [Meteor.subscribe('notifications')]
   // }
 });
 
-ChatController = RouteController.extend({
-  template: 'chatroom',
-  waitOn: function() {
-    return Meteor.subscribe('users')
-  },
-  data: function() {
-    return {
-      userslist: Meteor.users.find({}).fetch()
-    }
-  }
-})
-
 Router.map( function () {
 	this.route('home', {
 	  path: '/',
-    controller : 'ChatController'
+    template: 'chatroom', // to be changed
+    action: function() {
+      if(Meteor.user()) {
+        this.redirect('/chat/test2') // need to do more clever thing here
+      } else {
+        this.render();
+      }
+    }
 	});
 
   this.route('chat', {
     path: '/chat',
     action: function() {
-      this.redirect('/');
+      this.redirect('/chat/test2'); // need to do more clever thing here
     }
   })
 
@@ -44,6 +39,7 @@ Router.map( function () {
     data: function() {
       return {
         userslist: Meteor.users.find({}).fetch(),
+        chatpartner: Meteor.users.find({username: this.params.username}).fetch(),
         userchats: Chats.find({
           $or: [
             {$and: [{recipient: this.params.username}, {sender: Meteor.user().username}]},

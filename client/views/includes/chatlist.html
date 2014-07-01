@@ -11,6 +11,6 @@
 		}
 	</style>
 	{{#each userslist}}
-		<div class="user_list {{isTheUser username}}"><span class="glyphicon glyphicon-user {{ userStatus profile.status }} "></span>&nbsp;<a href="/chat/{{username}}">{{username}}</a></div>
+		<div class="user_list {{isTheUser username}}"><span class="glyphicon glyphicon-user {{ userStatus profile.chat_status }} "></span>&nbsp;<a href="/chat/{{username}}">{{username}} {{isTyping}}</a></div>
 	{{/each}}
 </template>

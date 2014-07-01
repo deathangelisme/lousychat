@@ -22,7 +22,7 @@
 	</style>
 	<div class="col-xs-12">
 		<div id="userChatHeader">
-			<h3>Your recent chats with {{username}}</h3>
+			<h3>{{isPartnerTyping}}</h3>
 		</div>
 		<div id="userChatCont">
 			{{#each userchats}}
@@ -33,7 +33,7 @@
 						{{else}}
 							<strong>{{sender}}</strong>
 						{{/if}}
-					</span>: <span>{{msg}}</span>&nbsp;<span class="created_time timeago" data-livestamp="{{created_at}}"></span>
+					</span>: <span>{{msg}}</span>&nbsp;<span class="created_time" data-livestamp="{{created_at}}"></span>
 				</div>
 				{{refreshChat}}
 			{{/each}}
