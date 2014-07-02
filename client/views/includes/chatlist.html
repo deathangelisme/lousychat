@@ -1,16 +1,23 @@
 <template name="chatlist">
 	<style>
 		#chatListCont .online {
-			color: green;
+			color: #008000;
+		}
+		#chatListCont .away {
+			color: #FFB630;
 		}
 		#chatListCont .offline {
-			color: #ccc;
+			color: #CCC;
 		}
 		#chatListCont .user_list {
 			padding: 10px 0px;
 		}
+
+		#chatListCont .last_seen {
+			font-size: 0.7em;
+		}
 	</style>
 	{{#each userslist}}
-		<div class="user_list {{isTheUser username}}"><span class="glyphicon glyphicon-user {{ userStatus profile.chat_status }} "></span>&nbsp;<a href="/chat/{{username}}">{{username}} {{isTyping}}</a></div>
+		<div class="user_list {{isTheUser username}}"><span class="glyphicon glyphicon-user {{userStatus profile.chat_status }} "></span>&nbsp;<a href="/chat/{{username}}">{{username}}</a>&nbsp;<span class="last_seen">{{isNotOnline}} <span class="{{isNotOnline true}}" data-livestamp="{{profile.last_login}}"></span></span></div>
 	{{/each}}
 </template>

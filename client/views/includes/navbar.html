@@ -12,13 +12,10 @@
     <a class="navbar-brand" href="/">LousyChat</a>
   </div>
   <div class="collapse navbar-collapse">
+    {{#if currentUser}}
     <ul id="userInfo" class="nav navbar-nav navbar-right">
       <li class="dropdown">
-          {{#if currentUser}}
-            <a href="/profile" class="dropdown-toggle" data-toggle="dropdown">Hello {{currentUser.username}}!</a>
-          {{else}}
-            <a data-toggle="modal" href="#login">Login</a>
-          {{/if}}
+          <a href="/profile" class="dropdown-toggle" data-toggle="dropdown">Hello {{currentUser.username}}!</a>
         <ul class="dropdown-menu">
           <!-- <li><a href="/profile/{{currentUser.username}}">Profile</a></li> -->
           <li><a href="/settings">Settings</a></li>
@@ -26,5 +23,6 @@
         </ul>
       </li>
     </ul>
+    {{/if}}
   </div><!--/.nav-collapse -->
 </template>

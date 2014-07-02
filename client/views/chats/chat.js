@@ -13,7 +13,7 @@ Template.chat.helpers({
 			msg : $('#sendChatInput').val(),
 				created_at : (new Date()).toISOString()
 			});
-			Meteor.call('updateUserStatus', undefined);
+			Meteor.call('updateTypingStatus', undefined);
 			$('#sendChatInput').val('');
 			Template.chat.refreshChat();
 		}
@@ -37,7 +37,6 @@ Template.chat.helpers({
   	return Date(this.created_at).toString();
 	},
 	isPartnerTyping: function() {
-		bro = this;
 		if(this.chatpartner[0].profile.is_typing_to == Meteor.user().username) {
 			return this.chatpartner[0].username + " is typing....";
 		} else {
@@ -46,6 +45,8 @@ Template.chat.helpers({
 	},
 	rendered: function() {
 		Template.chat.refreshChat();
+
+		addHiddenWindowListener();
 	}
 })
 
@@ -59,9 +60,9 @@ Template.chat.events({
 		}
 
 		if($("#sendChatInput").val().length > 0) {
-			Meteor.call('updateUserStatus', Session.get('chatPartner'));
+			Meteor.call('updateTypingStatus', Session.get('chatPartner'));
 		} else {
-			Meteor.call('updateUserStatus', undefined);
+			Meteor.call('updateTypingStatus', undefined);
 		}
 	},
 })

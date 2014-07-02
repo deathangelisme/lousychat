@@ -14,19 +14,14 @@
   <!-- main content -->
   <div id="main">
     <div class="container">
-      <div id="contentCont" class="col-sm-9">
+      <div id="contentCont" class="{{#if currentUser}}col-sm-9{{else}}col-sm-12{{/if}}">
         {{> yield}}
       </div>
-      <div id="chatListCont" class="col-sm-3">
-        {{#if currentUser}}
+      {{#if currentUser}}
+        <div id="chatListCont" class="col-sm-3">
           {{> chatlist}}
-        {{/if}}
-      </div>
+        </div>
+      {{/if}}
     </div>
-  </div>
-
-  <!-- reusables, modals -->
-  <div>
-    {{> login}}
   </div>
 </template>

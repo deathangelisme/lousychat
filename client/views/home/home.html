@@ -1,0 +1,15 @@
+<template name="home">
+	<div id="welcomeTextCont" class="col-sm-8">
+		Lousy chat : a chat service that is lousy<br />
+		{{#if currentUser}}
+			This was supposed to be newsfeed or main lounge. Well.<br />
+			Please select one of the users on the right to begin chat.
+		{{/if}}
+	</div>
+	{{#if currentUser}}
+	{{else}}
+	<div id="loginCont" class="col-sm-3">
+		{{> login}}
+	</div>
+	{{/if}}
+</template>

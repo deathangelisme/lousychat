@@ -10,8 +10,7 @@ Template.login.events({
 			if(typeof(result) != 'undefined') {
 				alert(result.reason);
 			} else {
-				$('#login').modal('hide');
-				// setUserStatus(Meteor.user()._id, 'online');
+				Meteor.call('updateChatStatus', 1);
 			}
 		});
 	},
@@ -27,8 +26,7 @@ Template.login.events({
 				if(typeof(result) != 'undefined') {
 					alert(result.reason);
 				} else {
-					$('#login').modal('hide');
-					// setUserStatus(Meteor.user()._id, 'online');
+					Meteor.call('updateChatStatus', 1);
 				}
 			});
 		} else {
@@ -38,8 +36,16 @@ Template.login.events({
 
 	'click #signupLink' : function(e) {
 		$(e.currentTarget).addClass('hide');
+		$("#loginLink").removeClass('hide');
 		$('#loginForm').addClass('hide');
 		$('#signupForm').removeClass('hide');
+	},
+
+	'click #loginLink' : function(e) {
+		$(e.currentTarget).addClass('hide');
+		$("#signupLink").removeClass('hide');
+		$('#loginForm').removeClass('hide');
+		$('#signupForm').addClass('hide');
 	}
 })
 
