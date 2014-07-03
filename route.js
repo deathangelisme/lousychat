@@ -18,7 +18,7 @@ Router.map( function () {
     },
     data: function() {
       return {
-        userslist: Meteor.users.find({}).fetch()
+        userslist: (Meteor.userId() ? Meteor.users.find({_id: {$ne: Meteor.userId()}}).fetch() : Meteor.users.find({}).fetch())
       };
     }
 	});
@@ -38,7 +38,7 @@ Router.map( function () {
     },
     data: function() {
       return {
-        userslist: Meteor.users.find({}).fetch(),
+        userslist: (Meteor.userId() ? Meteor.users.find({_id: {$ne: Meteor.userId()}}).fetch() : Meteor.users.find({}).fetch()),
         chatpartner: Meteor.users.find({username: this.params.username}).fetch(),
         userchats: Chats.find({
           $or: [
