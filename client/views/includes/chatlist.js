@@ -12,6 +12,12 @@ Template.chatlist.userStatus = function(status) {
 	}
 }
 
-Template.chatlist.isTheUser = function(username) {
-	return username == Meteor.user().username ? 'hide' : ''
+Template.chatlist.isNotOnline = function(hideFlag) {
+	if(hideFlag) {
+		return (this.profile.chat_status == 1 ? 'hide' : '');
+	} else {
+		var chatStatus = this.profile.chat_status;
+		if(typeof(this.profile.last_login) == 'undefined') return '';
+		return (chatStatus == 1 ? 'Online' : (chatStatus == 0 ? 'Away since' : 'Last seen online :'));
+	}
 }

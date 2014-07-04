@@ -12,71 +12,63 @@
 			margin-top: 0px;
 		}
 
-		#signupLinkCont {
+		#signupLinkCont, #loginLinkCont {
 			margin-top: 15px;
 		}
 	</style>
+	<form>
+  	<!-- login form -->
+    <div id="loginForm">
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+			    <label for="email">Email or username</label>
+			    <input type="text" class="form-control" id="usercreds" name="usercreds" placeholder="Enter email or username">
+			  </div>
+			  <div class="form-group">
+			    <label for="password">Password</label>
+			    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="loginBtn" class="btn btn-primary">Login</button>
+        <div id="signupLinkCont">
+        	<a href="#" onclick="return false;" id="signupLink">Don't have an account yet? Signup now!</a>
+      	</div>
+      </div>
+    </div>
 
-
-	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	  	<form>
-	  	<!-- login form -->
-	    <div id="loginForm" class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title">Login now</h4>
-	      </div>
-	      <div class="modal-body">
-	        <div class="form-group">
-				    <label for="email">Email or username</label>
-				    <input type="text" class="form-control" id="usercreds" name="usercreds" placeholder="Enter email or username">
-				  </div>
-				  <div class="form-group">
-				    <label for="password">Password</label>
-				    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-				  </div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	        <button type="button" id="loginBtn" class="btn btn-primary">Login</button>
-	        <div id="signupLinkCont">
-	        	<a href="#" onclick="return false;" id="signupLink">Don't have an account yet? Signup now!</a>
-	      	</div>
-	      </div>
-	    </div><!-- /.modal-content -->
-
-	    <!-- signup form -->
-	    <div id="signupForm" class="modal-content hide">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title">Signup</h4>
-	      </div>
-	      <div class="modal-body">
-	        <div class="form-group">
-				    <label for="email">Email</label>
-				    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-				  </div>
-				  <div class="form-group">
-				    <label for="username">Username</label>
-				    <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
-				  </div>
-				  <div class="form-group">
-				    <label for="password">Password</label>
-				    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-				  </div>
-				  <div class="form-group">
-				    <label for="password-confirmation">Password (again, duh)</label>
-				    <input type="password" class="form-control" id="password-confirmation" name="password-confirmation" placeholder="Password confirmation">
-				  </div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	        <button type="button" id="signupBtn" class="btn btn-primary">Signup</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-
-	  	</form>
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+    <!-- signup form -->
+    <div id="signupForm" class="hide">
+      <div class="modal-header">
+        <h4 class="modal-title">Signup</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+			    <label for="email">Email</label>
+			    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+			  </div>
+			  <div class="form-group">
+			    <label for="username">Username</label>
+			    <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
+			  </div>
+			  <div class="form-group">
+			    <label for="password">Password</label>
+			    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			  </div>
+			  <div class="form-group">
+			    <label for="password-confirmation">Password (again, duh)</label>
+			    <input type="password" class="form-control" id="password-confirmation" name="password-confirmation" placeholder="Password confirmation">
+			  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="signupBtn" class="btn btn-primary">Signup</button>
+      </div>
+      <div id="loginLinkCont">
+        	<a href="#" onclick="return false;" id="loginLink">Back to login</a>
+      	</div>
+    </div>
+	</form>
 </template>

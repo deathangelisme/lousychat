@@ -17,16 +17,15 @@
       <div id="contentCont" class="col-sm-9">
         {{> yield}}
       </div>
-      <div id="chatListCont" class="col-sm-3">
-        {{#if currentUser}}
+      {{#if currentUser}}
+        <div id="chatListCont" class="col-sm-3">
           {{> chatlist}}
-        {{/if}}
-      </div>
+        </div>
+      {{else}}
+        <div id="loginCont" class="col-sm-3">
+          {{> login}}
+        </div>
+      {{/if}}
     </div>
-  </div>
-
-  <!-- reusables, modals -->
-  <div>
-    {{> login}}
   </div>
 </template>

@@ -13,20 +13,20 @@ Router.configure({
 Router.map( function () {
 	this.route('home', {
 	  path: '/',
-    template: 'chatroom', // to be changed
-    action: function() {
-      if(Meteor.user()) {
-        this.redirect('/chat/test2') // need to do more clever thing here
-      } else {
-        this.render();
-      }
+    waitOn: function() {
+      return Meteor.subscribe('users');
+    },
+    data: function() {
+      return {
+        userslist: (Meteor.userId() ? Meteor.users.find({_id: {$ne: Meteor.userId()}}).fetch() : Meteor.users.find({}).fetch())
+      };
     }
 	});
 
   this.route('chat', {
     path: '/chat',
     action: function() {
-      this.redirect('/chat/test2'); // need to do more clever thing here
+      this.redirect('/'); // need to do more clever thing here
     }
   })
 
@@ -38,7 +38,7 @@ Router.map( function () {
     },
     data: function() {
       return {
-        userslist: Meteor.users.find({}).fetch(),
+        userslist: (Meteor.userId() ? Meteor.users.find({_id: {$ne: Meteor.userId()}}).fetch() : Meteor.users.find({}).fetch()),
         chatpartner: Meteor.users.find({username: this.params.username}).fetch(),
         userchats: Chats.find({
           $or: [
@@ -62,7 +62,7 @@ Router.map( function () {
   this.route('logout', {
     path: '/logout',
     action: function() {
-      // setUserStatus(Meteor.user()._id, 'offline');
+      Meteor.call('updateChatStatus', -1);
       Meteor.logout();
       this.redirect('/');
     }
