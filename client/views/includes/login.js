@@ -5,32 +5,34 @@
 */
 
 Template.login.events({
-	'click #loginBtn' : function() {
-		Meteor.loginWithPassword($('#loginForm input[name="usercreds"]').val(), $('#loginForm input[name="password"]').val(), function(result) {
-			if(typeof(result) != 'undefined') {
-				alert(result.reason);
-			} else {
-				Meteor.call('updateChatStatus', 1);
-			}
-		});
-	},
-
-	'click #signupBtn' : function() {
-		if($('#signupForm input[name="password"]').val() == $('#signupForm input[name="password-confirmation"]').val() && $('#signupForm input[name="password"]').val().length != 0) {
-			Accounts.createUser({
-				username: $('#signupForm input[name="username"]').val(), 
-				email: $('#signupForm input[name="email"]').val(), 
-				password: $('#signupForm input[name="password"]').val()
-				}, 
-			function(result) {
+	'submit form#loginOrSignup' : function(e) {
+		e.preventDefault();
+		var form = $(e.target).closest('form').serializeArray();
+		if($(e.target).find('button:visible').val() === 'login') {
+			Meteor.loginWithPassword(form[0].value, form[1].value, function(result) {
 				if(typeof(result) != 'undefined') {
-					alert(result.reason);
+					alert(result.reason)
 				} else {
 					Meteor.call('updateChatStatus', 1);
 				}
-			});
+			})
 		} else {
-			alert('Passwords don\'t match');
+			if(form[4].value !== form[5].value || form[5].value === '') {
+				alert('Passwords don\'t match');
+			} else {
+				Accounts.createUser({
+					username: form[3].value, 
+					email: form[2].value, 
+					password: form[4].value
+				}, 
+				function(result) {
+					if(typeof(result) != 'undefined') {
+						alert(result.reason);
+					} else {
+						Meteor.call('updateChatStatus', 1);
+					}
+				});
+			}
 		}
 	},
 
@@ -51,10 +53,4 @@ Template.login.events({
 
 // bind DOM events here
 Template.login.rendered = function() {
-	$('#login').on('hidden.bs.modal', function () {
-		$(this).find('form')[0].reset();
-		$(this).find('#signupForm').addClass('hide');
-		$(this).find('#loginForm').removeClass('hide');
-		$(this).find('#signupLink').removeClass('hide');
-	})
 }

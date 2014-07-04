@@ -27,5 +27,22 @@ Meteor.methods({
 		});
 
 		Meteor.users.update(this.userId, {$set: chatStatusObj})
+	},
+	createAndValidateUser: function(form) {
+		if(form[4].value !== form[5].value || form[5].value === '') {
+			return 'Passwords don\'t match';
+		}
+		Accounts.createUser({
+			username: form[2].value, 
+			email: form[3].value, 
+			password: form[4].value
+			}, 
+		function(result) {
+			if(typeof(result) != 'undefined') {
+				return result.reason;
+			} else {
+				return undefined;
+			}
+		});
 	}
 })
