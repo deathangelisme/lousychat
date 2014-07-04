@@ -16,7 +16,7 @@
 			margin-top: 15px;
 		}
 	</style>
-	<form>
+	<form id="loginOrSignup">
   	<!-- login form -->
     <div id="loginForm">
       <div class="modal-header">
@@ -25,15 +25,15 @@
       <div class="modal-body">
         <div class="form-group">
 			    <label for="email">Email or username</label>
-			    <input type="text" class="form-control" id="usercreds" name="usercreds" placeholder="Enter email or username">
+			    <input type="text" class="form-control loginInput" id="usercreds" name="usercreds" placeholder="Enter email or username">
 			  </div>
 			  <div class="form-group">
-			    <label for="password">Password</label>
-			    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			    <label for="userpassword">Password</label>
+			    <input type="password" class="form-control loginInput" id="userpassword" name="userpassword" placeholder="Password">
 			  </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="loginBtn" class="btn btn-primary">Login</button>
+        <button type="submit" name="submitType" value="login" class="btn btn-primary">Login</button>
         <div id="signupLinkCont">
         	<a href="#" onclick="return false;" id="signupLink">Don't have an account yet? Signup now!</a>
       	</div>
@@ -48,23 +48,23 @@
       <div class="modal-body">
         <div class="form-group">
 			    <label for="email">Email</label>
-			    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+			    <input type="email" class="form-control signupInput" id="email" name="email" placeholder="Enter email">
 			  </div>
 			  <div class="form-group">
 			    <label for="username">Username</label>
-			    <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
+			    <input type="username" class="form-control signupInput" id="username" name="username" placeholder="Enter username">
 			  </div>
 			  <div class="form-group">
 			    <label for="password">Password</label>
-			    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			    <input type="password" class="form-control signupInput" id="password" name="password" placeholder="Password">
 			  </div>
 			  <div class="form-group">
 			    <label for="password-confirmation">Password (again, duh)</label>
-			    <input type="password" class="form-control" id="password-confirmation" name="password-confirmation" placeholder="Password confirmation">
+			    <input type="password" class="form-control signupInput" id="password-confirmation" name="password-confirmation" placeholder="Password confirmation">
 			  </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="signupBtn" class="btn btn-primary">Signup</button>
+        <button type="submit" name="submitType" value="signup" class="btn btn-primary">Signup</button>
       </div>
       <div id="loginLinkCont">
         	<a href="#" onclick="return false;" id="loginLink">Back to login</a>
