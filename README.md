@@ -1,1 +1,6 @@
-Simple basic chat. Not done yet. Lot of things to fix
+Simple basic chat. Things to come :
+
+* Improved user online status
+* Chat notifications
+* Design improvement
+* etc...
