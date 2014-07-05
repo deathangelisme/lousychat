@@ -5,16 +5,20 @@ Meteor.publish('chats', function() {
 	return Chats.find({});
 })
 
-Meteor.publish('userChatStatus', function() {
-	return Meteor.users.find({_id: this.userId}, {
-		fields: {chat_status: 1, is_typing: 1}
-	})
+Meteor.publish('notifications', function() {
+	return Notifications.find({});
 })
 
 Meteor.methods({
 	updateTypingStatus: function(isTyping)  {
 		Meteor.users.update(this.userId, {$set: {
-			'profile.is_typing_to' : isTyping
+			'profile.is_typing' : isTyping
+			}
+		})
+	},
+	updateViewingStatus: function(isViewing)  {
+		Meteor.users.update(this.userId, {$set: {
+			'profile.is_viewing' : isViewing
 			}
 		})
 	},
@@ -49,5 +53,9 @@ Meteor.methods({
 				return undefined;
 			}
 		});
+	},
+	readAllChats: function(chat_sender) {
+		var user = Meteor.users.findOne(this.userId);
+		Chats.update({sender: chat_sender, recipient: user.username}, {$set: {unread: false}}, {multi: true})
 	}
 })
