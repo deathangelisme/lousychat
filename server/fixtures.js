@@ -5,6 +5,7 @@ if(Meteor.users.find().count() === 0) {
 		email: "shabriwa.shalat+test1@gmail.com",
 		profile: {
 			chat_status: -1,
+			last_login: (new Date()).toISOString(),
 			is_typing_to: undefined
 		}
 	});
@@ -14,6 +15,7 @@ if(Meteor.users.find().count() === 0) {
 		email: "shabriwa.shalat+test2@gmail.com",
 		profile: {
 			chat_status: -1,
+			last_login: (new Date()).toISOString(),
 			is_typing_to: undefined
 		}
 	});
@@ -23,6 +25,7 @@ if(Meteor.users.find().count() === 0) {
 		email: "shabriwa.shalat+test3@gmail.com",
 		profile: {
 			chat_status: -1,
+			last_login: (new Date()).toISOString(),
 			is_typing_to: undefined
 		}
 	});

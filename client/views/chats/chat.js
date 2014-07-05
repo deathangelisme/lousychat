@@ -45,8 +45,6 @@ Template.chat.helpers({
 	},
 	rendered: function() {
 		Template.chat.refreshChat();
-
-		addHiddenWindowListener();
 	}
 })
 

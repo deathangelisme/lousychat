@@ -21,9 +21,18 @@ addHiddenWindowListener = function() {
   document.removeEventListener(visibilityChange);
   document.addEventListener(visibilityChange, function() {
     if (document[hidden]) {
+      Session.set('isWindowHidden', true);
       Meteor.call('updateChatStatus', 0);
     } else {
+      Session.set('isWindowHidden', undefined);
       Meteor.call('updateChatStatus', 1);
     }
   }, false);
+}
+
+addCloseWindowListener = function() {
+  window.removeEventListener('beforeunload');
+  window.addEventListener('beforeunload', function () {
+    Meteor.call('updateChatStatus', 0);
+  });
 }

@@ -23,7 +23,12 @@ Template.login.events({
 				Accounts.createUser({
 					username: form[3].value, 
 					email: form[2].value, 
-					password: form[4].value
+					password: form[4].value,
+					profile: {
+						chat_status: 1,
+						is_typing_to: undefined,
+						last_login: (new Date()).toISOString()
+					}
 				}, 
 				function(result) {
 					if(typeof(result) != 'undefined') {

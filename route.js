@@ -10,6 +10,18 @@ Router.configure({
   // }
 });
 
+var beforeHooks = {
+  windowListener: function() {
+    if (Meteor.user()) {
+      if(Meteor.user().profile.chat_status === 0 && Session.get('isWindowHidden') === undefined) Meteor.call('updateChatStatus', 1);
+      addHiddenWindowListener();
+      addCloseWindowListener();
+    }
+  }
+}
+
+Router.onBeforeAction(beforeHooks.windowListener);
+
 Router.map( function () {
 	this.route('home', {
 	  path: '/',
