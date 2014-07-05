@@ -32,8 +32,16 @@ Router.map( function () {
       return {
         userslist: (Meteor.userId() ? Meteor.users.find({_id: {$ne: Meteor.userId()}}).fetch() : Meteor.users.find({}).fetch())
       };
+    },
+    action: function() {
+      if(Meteor.user()) Meteor.call('updateViewingStatus', undefined);
+      this.render();
     }
 	});
+
+  // *** ROUTE 'chat'
+  // * displays chat interface without params
+  // * should be checked for login
 
   this.route('chat', {
     path: '/chat',
@@ -41,6 +49,10 @@ Router.map( function () {
       this.redirect('/'); // need to do more clever thing here
     }
   })
+
+  // *** ROUTE 'userchat'
+  // * displays chat interface between users
+  // * should be checked for login
 
   this.route('userchat', {
     path: '/chat/:username',
@@ -63,9 +75,15 @@ Router.map( function () {
     },
     action: function() {
       Session.set('chatPartner', this.params.username);
+      Meteor.call('updateViewingStatus', this.params.username);
+      Meteor.call('readAllChats', this.params.username);
       this.render();
     }
   });
+
+  // *** ROUTE 'userchat'
+  // * displays chat interface between users
+  // * should be checked for login
 
   this.route('settings', {
     path: '/settings'

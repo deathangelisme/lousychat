@@ -6,7 +6,8 @@ if(Meteor.users.find().count() === 0) {
 		profile: {
 			chat_status: -1,
 			last_login: (new Date()).toISOString(),
-			is_typing_to: undefined
+			is_typing: undefined,
+			is_viewing: undefined
 		}
 	});
 	Accounts.createUser({
@@ -16,7 +17,8 @@ if(Meteor.users.find().count() === 0) {
 		profile: {
 			chat_status: -1,
 			last_login: (new Date()).toISOString(),
-			is_typing_to: undefined
+			is_typing: undefined,
+			is_viewing: undefined
 		}
 	});
 	Accounts.createUser({
@@ -26,7 +28,8 @@ if(Meteor.users.find().count() === 0) {
 		profile: {
 			chat_status: -1,
 			last_login: (new Date()).toISOString(),
-			is_typing_to: undefined
+			is_typing: undefined,
+			is_viewing: undefined
 		}
 	});
 }

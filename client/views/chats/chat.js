@@ -7,11 +7,14 @@
 Template.chat.helpers({
 	sendChatMsg: function() {
 		if($('#sendChatInput').val().length > 0) {
+			var chatpartner = Meteor.users.findOne({username: Session.get('chatPartner')});
+			aaa = chatpartner;
 			Chats.insert({
-			sender : Meteor.user().username, 
-			recipient : Session.get('chatPartner'), 
-			msg : $('#sendChatInput').val(),
-				created_at : (new Date()).toISOString()
+				sender : Meteor.user().username, 
+				recipient : Session.get('chatPartner'), 
+				msg : $('#sendChatInput').val(),
+				created_at : (new Date()).toISOString(),
+				unread: chatpartner.profile.is_viewing === Meteor.user().username ? false : true
 			});
 			Meteor.call('updateTypingStatus', undefined);
 			$('#sendChatInput').val('');
@@ -26,18 +29,11 @@ Template.chat.helpers({
 	isMyChat: function(sender, username) {
 		return sender == Meteor.user().username;
 	},
-	isTyping: function() {
-		if(Session.get('isTyping')) {
-			return 'yes';
-		} else {
-			return 'no';
-		}
-	},
 	get_human_date: function () {
   	return Date(this.created_at).toString();
 	},
 	isPartnerTyping: function() {
-		if(this.chatpartner[0].profile.is_typing_to == Meteor.user().username) {
+		if(this.chatpartner[0].profile.is_typing && this.chatpartner[0].profile.is_viewing == Meteor.user().username) {
 			return this.chatpartner[0].username + " is typing....";
 		} else {
 			return this.chatpartner[0].username;
@@ -58,7 +54,7 @@ Template.chat.events({
 		}
 
 		if($("#sendChatInput").val().length > 0) {
-			Meteor.call('updateTypingStatus', Session.get('chatPartner'));
+			Meteor.call('updateTypingStatus', true);
 		} else {
 			Meteor.call('updateTypingStatus', undefined);
 		}
