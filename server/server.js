@@ -60,6 +60,8 @@ Meteor.methods({
 	},
 	updateOnRevisit: function() {
 		var user = Meteor.users.findOne(this.userId);
-		if (user.profile.chat_status === 0) Meteor.call('updateChatStatus', 1);
+		if (user !== undefined) {
+			if (user.profile.chat_status === 0) Meteor.call('updateChatStatus', 1);
+		}
 	}
 })
