@@ -18,8 +18,8 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
  
 addHiddenWindowListener = function() {
   if (typeof document.addEventListener === "undefined" || typeof hidden === "undefined") throw "Page visibility is not supported in this browser";
-  document.removeEventListener(visibilityChange);
-  document.addEventListener(visibilityChange, function() {
+  if (typeof hiddenWindow !== "undefined") document.removeEventListener(visibilityChange, hiddenWindow, false);
+  hiddenWindow = function() {
     if (document[hidden]) {
       Session.set('isWindowHidden', true);
       Meteor.call('updateChatStatus', 0);
@@ -27,12 +27,14 @@ addHiddenWindowListener = function() {
       Session.set('isWindowHidden', undefined);
       Meteor.call('updateChatStatus', 1);
     }
-  }, false);
+  }
+  document.addEventListener(visibilityChange, hiddenWindow, false);
 }
 
 addCloseWindowListener = function() {
-  window.removeEventListener('beforeunload');
-  window.addEventListener('beforeunload', function () {
+  if (typeof closeWindow !== "undefined") document.removeEventListener('beforeunload', closeWindow, false);
+  closeWindow = function () {
     Meteor.call('updateChatStatus', 0);
-  });
+  }
+  window.addEventListener('beforeunload', closeWindow, false);
 }
