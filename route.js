@@ -12,11 +12,21 @@ Router.configure({
 
 var beforeHooks = {
   windowListener: function() {
-    if (Meteor.user()) {
-      if(Meteor.user().profile.chat_status === 0 && Session.get('isWindowHidden') === undefined) Meteor.call('updateChatStatus', 1);
-      addHiddenWindowListener();
-      addCloseWindowListener();
+    /* Issue #13
+    ** Calling Meteor.user() on beforeHooks caused unexpected result
+    ** Use case :
+    ** - Logged in using test1, logged out shortly after that
+    ** - Logged in using test2, the users list showing wrong list (test2 and test3)
+    ** - When logged out, the loading halted and goes freeze
+    ** The workaround is do the checking on server side
+    ** There should be a better workaround for this in the future
+    ** Needs further inspection on this problem
+    */
+    if (Session.get('isWindowHidden') === undefined) {
+      Meteor.call('updateOnRevisit');
     }
+    addHiddenWindowListener();
+    addCloseWindowListener();
   }
 }
 
