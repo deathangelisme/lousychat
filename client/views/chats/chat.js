@@ -13,7 +13,7 @@ Template.chat.helpers({
 				recipient : Session.get('chatPartner'), 
 				msg : $('#sendChatInput').val(),
 				created_at : (new Date()).toISOString(),
-				unread: chatpartner.profile.is_viewing === Meteor.user().username ? false : true
+				unread: chatpartner.profile.is_viewing === Meteor.user().username ? (chatpartner.profile.chat_status === 0 ? true : false) : true
 			});
 			Meteor.call('updateTypingStatus', undefined);
 			$('#sendChatInput').val('');
