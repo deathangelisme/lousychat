@@ -1,6 +1,12 @@
 Template.chatlist.helpers({
 	getChatCount: function(chat_sender) {
-		return Chats.find({sender: chat_sender, unread: true}).count();
+		var newchat = Chats.find({sender: chat_sender, unread: true}, {sort: {created_at: -1}}).fetch();
+		if (newchat.length > 0) {
+			// should show the number of new chats per user
+			return '';
+		} else {
+			return 'hide';
+		}
 	},
 	userStatus: function(status) {
 		switch(status) {

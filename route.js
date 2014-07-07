@@ -18,7 +18,7 @@ var beforeHooks = {
     ** - Logged in using test1, logged out shortly after that
     ** - Logged in using test2, the users list showing wrong list (test2 and test3)
     ** - When logged out, the loading halted and goes freeze
-    ** The workaround is do the checking on server side
+    ** The fix (#16) is doing the checking for the Meteor.user() on server side
     ** There should be a better workaround for this in the future
     ** Needs further inspection on this problem
     */
@@ -36,7 +36,7 @@ Router.map( function () {
 	this.route('home', {
 	  path: '/',
     waitOn: function() {
-      return Meteor.subscribe('users');
+      return [Meteor.subscribe('users'), Meteor.subscribe('chats')];
     },
     data: function() {
       return {
@@ -91,8 +91,9 @@ Router.map( function () {
     }
   });
 
-  // *** ROUTE 'userchat'
-  // * displays chat interface between users
+  // *** ROUTE 'settings'
+  // * displays settings
+  // * WIP
   // * should be checked for login
 
   this.route('settings', {

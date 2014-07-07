@@ -8,7 +8,6 @@ Template.chat.helpers({
 	sendChatMsg: function() {
 		if($('#sendChatInput').val().length > 0) {
 			var chatpartner = Meteor.users.findOne({username: Session.get('chatPartner')});
-			aaa = chatpartner;
 			Chats.insert({
 				sender : Meteor.user().username, 
 				recipient : Session.get('chatPartner'), 

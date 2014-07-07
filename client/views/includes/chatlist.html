@@ -16,10 +16,15 @@
 		#chatListCont .last_seen {
 			font-size: 0.7em;
 		}
+
+		.new_chat {
+			color: #f00;
+			font-size: 0.7em;
+		}
 	</style>
 	{{#each userslist}}
 		<div class="user_list">
-			<span class="glyphicon glyphicon-user {{userStatus profile.chat_status }} "></span>&nbsp;<a href="/chat/{{username}}">{{username}}</a>&nbsp;<span class="last_seen">{{isNotOnline}} <span class="{{isNotOnline true}}" data-livestamp="{{profile.last_login}}"></span></span>&nbsp;<span class="new_msg_count last_seen">({{getChatCount username}})</span>
+			<span class="glyphicon glyphicon-user {{userStatus profile.chat_status }} "></span>&nbsp;<a href="/chat/{{username}}">{{username}}</a>&nbsp;<span class="last_seen">{{isNotOnline}} <span class="{{isNotOnline true}}" data-livestamp="{{profile.last_login}}"></span></span><span class="new_chat glyphicon glyphicon-asterisk {{getChatCount username}}"></span>
 		</div>
 	{{/each}}
 </template>
