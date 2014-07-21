@@ -1,31 +1,32 @@
+<!--
+  Skulls pattern from http://subtlepatterns.com/skulls/
+-->
+
 <template name="layout">
+  <div id="wrap" class="{{#if currentUser}}navbar-padding{{/if}}">
 
-  <!-- the navbar -->
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      {{> navbar}}
-    </div>
-  </div>
-
-  <!-- the alerts -->
-  <div id="alertCont">
-  </div>
-
-  <!-- main content -->
-  <div id="main">
-    <div class="container">
-      <div id="contentCont" class="col-sm-9">
-        {{> yield}}
+    <!-- the navbar -->
+    {{#if currentUser}}
+    <div id="navbarTop" class="navbar navbar-fixed-top">
+      <div class="container">
+        {{> navbar}}
       </div>
-      {{#if currentUser}}
-        <div id="chatListCont" class="col-sm-3">
-          {{> chatlist}}
-        </div>
-      {{else}}
-        <div id="loginCont" class="col-sm-3">
-          {{> login}}
-        </div>
-      {{/if}}
     </div>
+    {{/if}}
+
+    <!-- the alerts -->
+    <div id="alertCont">
+    </div>
+
+    <!-- main content -->
+    <div id="mainCont">
+      {{> yield}}
+    </div>
+
+  </div>
+  
+  <!-- footer -->
+  <div id="footer">
+    {{> footer}}
   </div>
 </template>

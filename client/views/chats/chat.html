@@ -1,50 +1,54 @@
 <template name="chat">
-	<style>
-		#userChatCont {
-			height: 420px;
-			overflow: auto;
-		}
-
-		.alignLeft {
-			text-align: left;
-		}
-		.alignRight {
-			text-align: right;
-		}
-
-		.created_time {
-			font-size: 0.7em;
-		}
-
-		#chatInputCont {
-			margin: 20px 0px;
-		}
-	</style>
-	<div class="col-xs-12">
-		<div id="userChatHeader">
-			<h3>{{isPartnerTyping}}</h3>
+	<div id="chatCont" class="container">
+		<div  id="profileSection" class="col-sm-3">
+			{{> chatprofile}}
 		</div>
-		<div id="userChatCont">
-			{{#each userchats}}
-				<div class="{{#if isMyChat sender}}alignLeft{{else}}alignRight{{/if}}">
-					<span>
+		<div id="chatSection"  class="col-sm-9">
+			<div id="userChatCont">
+				{{#each userchats}}
+					{{#if isEmptyChat msg}}
+						<div class="align-center">
+							<span class="date-ph">{{datePlaceholder created_at}}</span>
+						</div>
+					{{else}}
 						{{#if isMyChat sender}}
-							<span>You</span>
+							<div class="align-right">
+								<div class="created_time">
+									{{formattedDate created_at}}
+								</div>
+								<div class="my-chat">
+									<div>
+										<span>{{{msg}}}</span>
+									</div>
+								</div>
+							</div>
 						{{else}}
-							<strong>{{sender}}</strong>
+							<div class="align-left">
+								<div class="sender-chat">
+									<span>{{{msg}}}</span>
+								</div>
+								<div class="created_time">
+									{{formattedDate created_at}}
+								</div>
+							</div>
 						{{/if}}
-					</span>: <span>{{msg}}</span>&nbsp;<span class="created_time" data-livestamp="{{created_at}}"></span>
+					{{/if}}
+					{{refreshChat}}
+				{{/each}}
+				<div id="partnerTyping" class="align-left {{isPartnerTyping}}">
+					<div class="sender-chat">
+						<span>...</span>
+					</div>
 				</div>
-				{{refreshChat}}
-			{{/each}}
-		</div>
-		<div id="chatInputCont">
-			<div class="input-group input-group-lg">
-	      <input type="text" id="sendChatInput" class="form-control">
-	      <span class="input-group-btn">
-	        <button id="sendChatBtn" class="btn btn-default" type="button">Send</button>
-	      </span>
-	    </div>
+			</div>
+			<div id="chatInputCont">
+				<div class="input-group">
+		      <input type="text" id="sendChatInput" class="form-control">
+		      <span class="input-group-btn">
+		        <button id="sendChatBtn" class="btn btn-default" type="button">Send</button>
+		      </span>
+		    </div>
+			</div>
 		</div>
 	</div>
 </template>

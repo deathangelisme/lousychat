@@ -42,6 +42,7 @@ Template.login.events({
 	},
 
 	'click #signupLink' : function(e) {
+		$(e.currentTarget).closest('form')[0].reset();
 		$(e.currentTarget).addClass('hide');
 		$("#loginLink").removeClass('hide');
 		$('#loginForm').addClass('hide');
@@ -49,6 +50,7 @@ Template.login.events({
 	},
 
 	'click #loginLink' : function(e) {
+		$(e.currentTarget).closest('form')[0].reset();
 		$(e.currentTarget).addClass('hide');
 		$("#signupLink").removeClass('hide');
 		$('#loginForm').removeClass('hide');
