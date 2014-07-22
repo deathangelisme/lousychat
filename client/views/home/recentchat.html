@@ -1,0 +1,39 @@
+<template name="recentchat">
+	<ul id="recentChatsCont">
+	{{#each getRecentChats}}
+		{{#if myChat}}
+		<li class="chat-item">
+			<div class="chatpartner">
+				<a href="chat/{{recipient}}">{{recipient}}</a>
+			</div>
+			<div class="align-right">
+				<div class="created_time">
+					{{formattedDate created_at}}
+				</div>
+				<div class="my-chat">
+					<div>
+						<span>{{{msg}}}</span>
+					</div>
+				</div>
+			</div>
+		</li>
+		{{else}}	
+		<li class="chat-item">
+			<div class="chatpartner">
+				<a href="chat/{{sender}}">{{sender}} {{#if unread}}<span class="glyphicon glyphicon-comment"></span>{{/if}}</a>
+			</div>
+			<div class="align-left">
+				<div class="sender-chat">
+					<div>
+						<span>{{{msg}}}</span>
+					</div>
+				</div>
+				<div class="created_time">
+					{{formattedDate created_at}}
+				</div>
+			</div>
+		</li>
+		{{/if}}
+	{{/each}}
+	</ul>
+</template>

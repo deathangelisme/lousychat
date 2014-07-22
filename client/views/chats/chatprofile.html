@@ -1,0 +1,23 @@
+<template name="chatprofile">
+	{{#each chatpartner}}
+		<div class="picCont">
+			<!-- picture goes here -->
+			<a href="#" class="pic thumbnail">
+				<div class="dummy"></div>
+			</a>
+		</div>
+		<div class="userNameCont">
+			<h4>{{username}}</h4>
+			<div class="user-status">
+				<span class="glyphicon glyphicon-user {{userStatus profile.chat_status}} "></span>&nbsp;
+				<span class="last_seen">
+					{{isNotOnline}}
+					<span class="{{isNotOnline true}}" data-livestamp="{{profile.last_login}}">...</span>
+				</span>
+			</div>
+		</div>
+		<div id="additionalsCont">
+			<!-- additional infos goes here -->
+		</div>
+	{{/each}}
+</template>

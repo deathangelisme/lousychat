@@ -69,10 +69,15 @@ Meteor.methods({
 	insertChat: function(chatobj, partner) {
 		var user = Meteor.users.findOne(this.userId);
 		var lastchat = Chats.find({
-          $or: [
-            {$and: [{recipient: partner.username}, {sender: user.username}]},
-            {$and: [{recipient: user.username}, {sender: partner.username}]},
-          ]
+					$and: [{
+						msg: {$ne : ''}
+					}, {
+							$or: [
+		            {$and: [{recipient: partner.username}, {sender: user.username}]},
+		            {$and: [{recipient: user.username}, {sender: partner.username}]},
+		          ]
+		        }
+        	]
         }, {limit: 1, sort: {created_at: -1}}).fetch();
 
 		// define the time gap to either update or add new chat

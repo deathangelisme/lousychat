@@ -1,0 +1,357 @@
+
+  @font-face {
+    font-family: 'colaboratelightregular';
+    src: url('fonts/ColabLig-webfont.eot');
+    src: url('fonts/ColabLig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/ColabLig-webfont.woff') format('woff'),
+         url('fonts/ColabLig-webfont.ttf') format('truetype'),
+         url('fonts/ColabLig-webfont.svg#colaboratelightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'droid_sansregular';
+    src: url('fonts/DroidSans-webfont.eot');
+    src: url('fonts/DroidSans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DroidSans-webfont.woff') format('woff'),
+         url('fonts/DroidSans-webfont.ttf') format('truetype'),
+         url('fonts/DroidSans-webfont.svg#droid_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ciclefina';
+    src: url('fonts/Cicle_Fina-webfont.eot');
+    src: url('fonts/Cicle_Fina-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Cicle_Fina-webfont.woff') format('woff'),
+         url('fonts/Cicle_Fina-webfont.ttf') format('truetype'),
+         url('fonts/Cicle_Fina-webfont.svg#ciclefina') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+  html,
+  body {
+    height: 100%;
+    font-family: 'ciclefina', helvetica, sans-serif;
+  }
+
+  #userChatCont {
+    font-family: 'colaboratelightregular', helvetica, sans-serif;
+  }
+
+  #iron-router-progress {
+    background-color: #E54E45;
+  }
+
+  #iron-router-progress.spinner:before {
+    border-color : #E54E45;
+}
+
+  #wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -40px;
+    padding: 0px 0 40px 0px;
+    background: #F2F2EF url('skulls.png');
+  }
+
+  .navbar-padding {
+    padding-top: 50px !important;
+  }
+
+  #footer {
+    height: 40px;
+  }
+
+  #navbarTop {
+    background: #403833;
+    color: #DBC390;
+  }
+
+  .navbar-right, .navbar-right ul.dropdown-menu {
+    font-size: 1.1em;
+  }
+
+  .navbar-brand {
+    font-size: 1.5em;
+  }
+
+  .navbar-brand .glyphicon {
+    font-size: 0.8em;
+  }
+
+  #sidebarCont, #contentCont {
+    margin: 15px 0px;
+  }
+
+  #sidebarCont {
+    padding: 0px 18px;
+  }
+
+  .btn-primary {
+    background: #E54E45;
+    border-color: #E54E45;
+  }
+
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: #E54E45;
+    border-color: #E54E45;
+  }
+
+  #footer {
+    background: #fff;
+    border-top: 2px solid #CECECE;
+    color: #000;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 6px;
+  }
+
+  #footer a:hover, #footer a:active, #footer a {
+    color: #E54E45;
+    font-weight: bold;
+  }
+
+  a, a:hover, a:active, a:focus {
+    color: #F2F2EF;
+  }
+
+  a.thumbnail:hover, a.thumbnail:active, a.thumbnail:focus {
+    border-color: #E54E45;
+  }
+
+  .nav > li > a:hover, .nav > li > a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    color: #403833;
+  }
+
+  .form-control:focus {
+   border-color: #E54E45; 
+  }
+
+  .form-group {
+    margin: 10px 0px;
+  }
+
+  .form-footer, .button-holder {
+    font-size: 0.95em;
+    margin: 15px 0px;
+    text-align: right;
+  }
+
+  #sloganCont {
+    text-align: center;
+    margin: 30px 0px;
+  }
+
+  #loginCont {
+    width: 300px;
+    margin: 0px auto;
+    background-color: #83756C;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0, .65);
+    font-size: 1.2em;
+  }
+
+  #loginCont input {
+    font-size: 1em;
+  }
+
+  #loginCont button {
+    font-size: 1.2em;
+  }
+
+  #sloganCont h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: rgb(112, 102, 96);
+    text-shadow: 0px 2px 5px #533F3F
+  }
+
+  #sloganCont span {
+    color: #E54E45;
+    font-size: 1.3em;
+  }
+
+  #dashboardCont {
+    min-height: 550px;
+    background-color: #fff;
+    font-size: 1.2em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0, .65);
+    padding: 0;
+  }
+
+  #dashboardCont h4 {
+    font-size: 1.6em;
+  }
+
+  #dashboardCont a, #dashboardCont a:active, #dashboardCont a:hover, #dashboardCont a:focus {
+    color: #E54E45;
+  }
+
+
+  .user-status .online {
+    color: #E54E45;
+  }
+  .user-status .away {
+    color: #83756C;
+  }
+  .user-status .offline {
+    color: #eee;
+  }
+
+  #chatHistoryCont {
+    min-height: 550px;
+    border-color: #E54E45;
+  }
+
+  #chatHistoryCont .newchat {
+    float: right;
+  }
+
+  #chatHistoryCont ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  #chatHistoryCont .chat-item {
+    border-top: 2px solid #E47770;
+    padding-bottom: 10px;
+  }
+
+  #chatHistoryCont .chatpartner {
+    padding: 5px;
+    font-size: 1.3em;
+  }
+
+  #chatCont {
+    /*background: #E54E45;*/
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0, .65);
+    padding: 0;
+  }
+
+  #chatSection, #profileSection, #myProfileCont {
+    height: 550px;
+  }
+
+  #chatSection .date-ph {
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    background: #83756C;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+  }
+
+  #profileSection, #myProfileCont {
+    background-color: rgb(245, 222, 179);
+    padding: 80px 15px;
+    text-align: center;
+  }
+
+  #myProfileCont {
+    background-color: #E47770;
+  }
+
+  #myProfileCont .userNameCont a {
+    background-color: #fff;
+    padding: 4px;
+    border-radius: 2px;
+  }
+
+  #profileSection h4, #myProfileCont h4 {
+    font-size: 3em;
+  }
+
+  #profileSection .picCont .pic, #myProfileCont .picCont .pic {
+    width: 150px;
+    height: 150px;
+    margin: 0px auto;
+  }
+
+  #userChatCont {
+    height: 480px;
+    overflow: auto;
+    padding: 30px 10px 0px 10px;
+    font-size: 1.2em;
+  }
+
+  .align-left {
+    text-align: left;
+  }
+  .align-right {
+    text-align: right;
+  }
+  .align-center {
+    text-align: center;
+  }
+
+  .my-chat, .sender-chat {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px 0px;
+  }
+
+  .sender-chat {
+    padding: 5px 8px;
+  }
+
+  .sender-chat {
+    background-color: rgb(245, 222, 179);
+  }
+
+  .my-chat {
+    background-color: #fff;
+    border: 2px solid rgb(245, 222, 179);
+  }
+
+  .align-right:after {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    margin-left: -5px;
+    border-left: 10px solid rgb(245, 222, 179);
+  }
+
+   .align-left:before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    margin-right: -5px;
+    border-right: 10px solid rgb(245, 222, 179);
+  }
+
+  .created_time {
+    font-size: 0.7em;
+    display: inline-block;
+  }
+
+  #chatInputCont {
+    margin: 15px 0px;
+  }
+
+  #chatInputCont input {
+    color: #222;
+    font-size: 1.2em;
+  }
