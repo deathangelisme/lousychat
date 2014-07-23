@@ -82,8 +82,18 @@
     font-size: 1.5em;
   }
 
-  .navbar-brand .glyphicon {
-    font-size: 0.8em;
+  .navbar-brand .newchat {
+    color: #E54E45;
+    animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+  }
+
+  .navbar-brand .newchat-count {
+    top: -5px;
+    left: 3px;
+    position: relative;
+    font-size: 0.9em;
   }
 
   #sidebarCont, #contentCont {
@@ -241,6 +251,12 @@
 
   #chatSection, #profileSection, #myProfileCont {
     height: 550px;
+  }
+
+  #chatCont #partnerTyping .sender-chat span {
+    animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
   }
 
   #chatSection .date-ph {

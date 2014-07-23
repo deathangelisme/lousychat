@@ -4,15 +4,7 @@
 
 Router.configure({
   layoutTemplate: 'layout',
-  loadingTemplate: 'loading',
-  waitOn: function() {
-    Meteor.subscribe('newchats')
-  },
-  data: function() {
-    return {
-      newchats: Chats.find({}).fetch()
-    }
-  }
+  loadingTemplate: 'loading'
 });
 
 var beforeHooks = {
