@@ -1,6 +1,7 @@
 Template.newchat.helpers({
 	getRandomuser: function() {
     var chathistory = Meteor.user().chathistory || [];
+    if(Session.get('randomuser') !== undefined) chathistory.push(Session.get('randomuser')[0].username);
     chathistory.push(Meteor.user().username);
     var users = Meteor.users.find({username : {
     	$nin: chathistory
@@ -36,7 +37,7 @@ Template.newchat.helpers({
 		} else {
 			var chatStatus = this.profile.chat_status;
 			if(typeof(this.profile.last_login) == 'undefined') return '';
-			return (chatStatus == 1 ? 'Online' : (chatStatus == 0 ? 'Away since' : 'Not online since'));
+			return (chatStatus == 1 ? 'Online' : (chatStatus == 0 ? 'Away since' : 'Offline since'));
 		}
 	},
 	rendered: function() {

@@ -18,7 +18,7 @@ Template.chatprofile.helpers({
 		} else {
 			var chatStatus = this.profile.chat_status;
 			if(typeof(this.profile.last_login) == 'undefined') return '';
-			return (chatStatus == 1 ? 'Online' : (chatStatus == 0 ? 'Away since' : 'Last seen online :'));
+			return (chatStatus == 1 ? 'Online' : (chatStatus == 0 ? 'Away since' : 'Offline since'));
 		}
 	}
 })

@@ -46,7 +46,7 @@ Template.chatlist.helpers({
 		} else {
 			var chatStatus = this.profile.chat_status;
 			if(typeof(this.profile.last_login) == 'undefined') return '';
-			return (chatStatus == 1 ? 'Online' : (chatStatus == 0 ? 'Away since' : 'Not online since'));
+			return (chatStatus == 1 ? 'Online' : (chatStatus == 0 ? 'Away since' : 'Offline since'));
 		}
 	},
 	getOnlineUserCount: function(userslist) {

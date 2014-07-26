@@ -55,6 +55,11 @@ Router.map( function () {
     template: 'newchat',
     waitOn: function() {
       return Meteor.subscribe('users')
+    },
+    onAfterAction: function() {
+      if(Meteor.user() === null) {
+        this.redirect('/');
+      }
     }
   })
 
@@ -67,6 +72,11 @@ Router.map( function () {
     template: 'chat',
     waitOn: function() {
       return [Meteor.subscribe('users'), Meteor.subscribe('chats')]
+    },
+    onAfterAction: function() {
+      if(Meteor.user() === null) {
+        this.redirect('/');
+      }
     },
     data: function() {
       return {
@@ -108,18 +118,18 @@ Router.map( function () {
     }
   })
 
-	this.route('createNotif', {
-		path: '/create',
-		where: 'server',
-		action: function () {
-			//Notifications.insert({name: this.params.lat+","+this.params.lon});
-			Notifications.insert({name: this.request.body.lat+","+this.request.body.lon});
-      // var filename = this.params.filename; // for params such as GET
-      // resp = {'lat' : this.request.body.lat, // for request body such as POST
-      //         'lon' : this.request.body.lon};
-      // this.response.writeHead(200, {'Content-Type': // for writing responses such as JSON
-      //                               'application/json; charset=utf-8'});
-      // this.response.end(JSON.stringify(resp)); // End-of-response to JSON
-    }
-	})
+	// this.route('createNotif', {
+	// 	path: '/create',
+	// 	where: 'server',
+	// 	action: function () {
+	// 		//Notifications.insert({name: this.params.lat+","+this.params.lon});
+	// 		Notifications.insert({name: this.request.body.lat+","+this.request.body.lon});
+ //      // var filename = this.params.filename; // for params such as GET
+ //      // resp = {'lat' : this.request.body.lat, // for request body such as POST
+ //      //         'lon' : this.request.body.lon};
+ //      // this.response.writeHead(200, {'Content-Type': // for writing responses such as JSON
+ //      //                               'application/json; charset=utf-8'});
+ //      // this.response.end(JSON.stringify(resp)); // End-of-response to JSON
+ //    }
+	// })
 })
