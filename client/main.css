@@ -119,7 +119,7 @@
     border-top: 2px solid #CECECE;
     color: #000;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.9em;
     padding: 6px;
   }
 
@@ -192,7 +192,6 @@
   #dashboardCont {
     min-height: 550px;
     background-color: #fff;
-    font-size: 1.2em;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0, .65);
     padding: 0;
@@ -220,6 +219,11 @@
   #chatHistoryCont {
     min-height: 550px;
     border-color: #E54E45;
+    font-size: 1.2em;
+  }
+
+  #chatHistoryCont #readAllChats {
+    font-size: 0.8em;
   }
 
   #chatHistoryCont .newchat {
@@ -234,6 +238,11 @@
   #chatHistoryCont .chat-item {
     border-top: 2px solid #E47770;
     padding-bottom: 10px;
+  }
+
+  #chatHistoryCont .no-history {
+    padding : 5px 0px;
+    font-size: 1.3em;
   }
 
   #chatHistoryCont .chatpartner {
@@ -269,7 +278,7 @@
     font-size: 0.8em;
   }
 
-  #profileSection, #myProfileCont {
+  #profileSection, #myProfileCont, #randomUserCont {
     background-color: rgb(245, 222, 179);
     padding: 80px 15px;
     text-align: center;
@@ -279,27 +288,88 @@
     background-color: #E47770;
   }
 
+  #randomUserCont {
+    width: 30%;
+    margin: 0px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 40px 15px;
+  }
+
+  #randomUserCont #loadingRandom {
+    font-size: 2em;
+  }
+
+  #randomUserCont #startChatCont {
+    margin: 15px 0px;
+  }
+
+  #randomUserCont a.start_chat {
+    padding: 5px;
+    background-color: #E47770;
+    color: white;
+    font-size: 1.4em;
+    border-radius: 5px;
+  }
+
+  #randomUserCont #anotherRandom a {
+    color: #E54E45;
+    font-size: 1.2em;
+  }
+
+  #randomUserCont .alert {
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  #backToHome {
+    width: 30%;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  #backToHome a {
+    padding: 10px;
+    font-size: 1.6em;
+    background-color: #fff;
+    color: #E54E45;
+  }
+
   #myProfileCont .userNameCont a {
     background-color: #fff;
     padding: 4px;
     border-radius: 2px;
+    font-size: 1.2em;
   }
 
-  #profileSection h4, #myProfileCont h4 {
+  #profileSection h4, #myProfileCont h4, #randomUserCont .userNameCont h4 {
     font-size: 3em;
   }
 
-  #profileSection .picCont .pic, #myProfileCont .picCont .pic {
+  #profileSection .picCont .pic, #myProfileCont .picCont .pic, #randomUserCont .pic {
     width: 150px;
     height: 150px;
     margin: 0px auto;
   }
 
   #userChatCont {
-    height: 480px;
+    height: 430px;
     overflow: auto;
-    padding: 30px 10px 0px 10px;
+    padding: 0px 10px;
     font-size: 1.2em;
+  }
+
+  #newChatLink {
+    text-align: right;
+    margin-top: 5px;
+    border-bottom: 1px solid #E09A95;
+    margin-bottom: 15px;
+  }
+
+  #newChatLink a {
+    color: #E47770;
+    font-size: 1.8em;
   }
 
   .align-left {
@@ -370,4 +440,9 @@
   #chatInputCont input {
     color: #222;
     font-size: 1.2em;
+  }
+
+  .dummy {
+    font-size: 9em;
+    color: #ccc;
   }

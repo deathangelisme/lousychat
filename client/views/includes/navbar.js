@@ -9,9 +9,11 @@ Template.navbar.helpers({
 			}).fetch()
 
 			if(newchats.length > 0) {
-				$('.navbar-brand span:last').addClass('newchat animated pulse');
+				$('.navbar-brand span:last').addClass('newchat animated bounce');
+				Session.set('hasUnreadChats', true);
 			} else {
-				$('.navbar-brand span:last').removeClass('newchat animated pulse');
+				Session.set('hasUnreadChats', false);
+				$('.navbar-brand span:last').removeClass('newchat animated bounce');
 			}
 		}
 	},

@@ -1,0 +1,51 @@
+<template name="newchat">
+	<div class="container">
+		<div id="randomUserCont">
+			<div id="loadingRandom">
+				Looking for a random user...
+			</div>
+			{{#each randomuser}}
+			<div id="randomUser">
+				<div class="picCont">
+					<!-- picture goes here -->
+					<a href="#" class="pic thumbnail">
+						<div class="dummy glyphicon glyphicon-picture"></div>
+					</a>
+				</div>
+				<div class="userNameCont">
+					<h4>{{username}}</h4>
+					<div class="user-status">
+						<span class="glyphicon glyphicon-user {{userStatus profile.chat_status}} "></span>&nbsp;
+						<span class="last_seen">
+							{{isNotOnline}}
+							<span class="{{isNotOnline true}}" data-livestamp="{{profile.last_login}}">...</span>
+						</span>
+					</div>
+				</div>
+				<div id="additionalsCont">
+					<!-- additional infos goes here -->
+				</div>
+				<div id="startChatCont">
+					<a class="start_chat" href="/chat/{{username}}">Chat with {{username}}</a>
+				</div>
+				<div id="anotherRandom">
+					<a href="#">Or look for another</a>
+				</div>
+			</div>
+			{{/each}}
+			<div id="chatByUsernameCont" class="hide">
+				<h4>Or find by username :</h4>
+				<div class="alert alert-danger hide"></div>
+				<div class="input-group">
+		      <input type="text" id="usernameInput" class="form-control" placeholder="Enter username">
+		      <span class="input-group-btn">
+		        <button id="usernameSubmit" class="btn btn-default" type="button">Chat now</button>
+		      </span>
+		    </div>
+			</div>
+		</div>
+		<div id="backToHome">
+			<a href="/">Back</a>
+		</div>
+	</div>
+</template>

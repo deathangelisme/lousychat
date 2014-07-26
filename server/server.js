@@ -58,7 +58,11 @@ Meteor.methods({
 	},
 	readAllChats: function(chat_sender) {
 		var user = Meteor.users.findOne(this.userId);
-		Chats.update({sender: chat_sender, recipient: user.username}, {$set: {unread: false}}, {multi: true})
+		if(chat_sender === undefined) {
+			Chats.update({recipient: user.username}, {$set: {unread: false}}, {multi: true})
+		} else {
+			Chats.update({sender: chat_sender, recipient: user.username}, {$set: {unread: false}}, {multi: true})
+		}
 	},
 	updateOnRevisit: function() {
 		var user = Meteor.users.findOne(this.userId);

@@ -17,26 +17,32 @@
 				</div>
 			</div>
 		</li>
-		{{else}}	
-		<li class="chat-item">
-			<div class="chatpartner">
-				{{#if unread}}
-					<strong><a href="chat/{{sender}}">{{sender}}</a></strong>
-				{{else}}
-					<a href="chat/{{sender}}">{{sender}}</a>
-				{{/if}}
-			</div>
-			<div class="align-left">
-				<div class="sender-chat">
-					<div>
-						<span>{{{msg}}}</span>
+		{{else}}
+			{{#if noHistory}}	
+			<li class="chat-item no-history">
+				You don't have chat history yet! <a href="/chat">Start a new chat now</a>
+			</li>
+			{{else}}
+			<li class="chat-item">
+				<div class="chatpartner">
+					{{#if unread}}
+						<strong><a href="chat/{{sender}}">{{sender}}</a></strong>
+					{{else}}
+						<a href="chat/{{sender}}">{{sender}}</a>
+					{{/if}}
+				</div>
+				<div class="align-left">
+					<div class="sender-chat">
+						<div>
+							<span>{{{msg}}}</span>
+						</div>
+					</div>
+					<div class="created_time">
+						{{formattedDate created_at}}
 					</div>
 				</div>
-				<div class="created_time">
-					{{formattedDate created_at}}
-				</div>
-			</div>
-		</li>
+			</li>
+			{{/if}}
 		{{/if}}
 	{{/each}}
 	</ul>

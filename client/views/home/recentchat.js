@@ -19,6 +19,8 @@ Template.recentchat.helpers({
 			})
 			recentchats = _.sortBy(recentchats, 'created_at');
 			return recentchats.reverse();
+		} else {
+			return [{myChat: false, noHistory: true}];
 		}
 	},
 	formattedDate: function(date) {

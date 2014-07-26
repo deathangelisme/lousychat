@@ -52,8 +52,9 @@ Router.map( function () {
 
   this.route('chat', {
     path: '/chat',
-    action: function() {
-      this.redirect('/'); // redirected when there's no params match the username
+    template: 'newchat',
+    waitOn: function() {
+      return Meteor.subscribe('users')
     }
   })
 

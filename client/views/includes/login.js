@@ -11,14 +11,15 @@ Template.login.events({
 		if($(e.target).find('button:visible').val() === 'login') {
 			Meteor.loginWithPassword(form[0].value, form[1].value, function(result) {
 				if(typeof(result) != 'undefined') {
-					alert(result.reason)
+					$('#loginOrSignup .alert').html(result.reason).removeClass('hide');
 				} else {
+					if(!$('#loginOrSignup .alert').hasClass('hide')) $('#loginOrSignup .alert').addClass('hide');
 					Meteor.call('updateChatStatus', 1);
 				}
 			})
 		} else {
 			if(form[4].value !== form[5].value || form[5].value === '') {
-				alert('Passwords don\'t match');
+				$('#loginOrSignup .alert').html('Passwords don\'t match').removeClass('hide');
 			} else {
 				Accounts.createUser({
 					username: form[3].value, 
@@ -32,7 +33,7 @@ Template.login.events({
 				}, 
 				function(result) {
 					if(typeof(result) != 'undefined') {
-						alert(result.reason);
+						$('#loginOrSignup .alert').html(result.reason).removeClass('hide');
 					} else {
 						Meteor.call('updateChatStatus', 1);
 					}
@@ -42,6 +43,7 @@ Template.login.events({
 	},
 
 	'click #signupLink' : function(e) {
+		if(!$('#loginOrSignup .alert').hasClass('hide')) $('#loginOrSignup .alert').addClass('hide');
 		$(e.currentTarget).closest('form')[0].reset();
 		$(e.currentTarget).addClass('hide');
 		$("#loginLink").removeClass('hide');
@@ -50,6 +52,7 @@ Template.login.events({
 	},
 
 	'click #loginLink' : function(e) {
+		if(!$('#loginOrSignup .alert').hasClass('hide')) $('#loginOrSignup .alert').addClass('hide');
 		$(e.currentTarget).closest('form')[0].reset();
 		$(e.currentTarget).addClass('hide');
 		$("#signupLink").removeClass('hide');

@@ -1,33 +1,16 @@
 <template name="home">
 	{{#if currentUser}}
-		<!-- 
-			Jul 16th 2014
-			The plan is to show the user's summary in homepage
-
-			- Chat with new random user
-			- List of new users contacting the user
-			- List of recent chat history
-
-			This way we don't need chatlist in the chat page
-			We do have to figure out a better way to browse recent chats directly from the chat page
-		-->
 		<div id="dashboardCont" class="container">
-			<!-- <div id="newChatCont" class="col-sm-6">
-				<h4>Start a new chat from the username</h4>
-				{{> newchat}}
-				<h4>Or select from the list</h4>
-				{{> chatlist}}
-			</div>
-			<div id="chatHistoryCont" class="col-sm-6">
-				<h4>Recent chat history</h4>
-				{{> recentchat}}
-			</div> -->
 			<div id="chatHistoryCont" class="col-sm-9">
-				<h4 class="clearfix">
-					<span class="title">Recent chat history</span>
-					<input type="username" id="newChatUsername" class="col-sm-9 hide" placeholder="Enter username" />
+				<h4>
+					<span class="title">Recent chat history</span>&nbsp;
+					{{#if hasUnreadChats}}
+					<a id="readAllChats" href="#">(read all chats)</a>
+					{{/if}}
 					<span class="newchat">
-						<a id="newChat" href="#">New chat</a><a id="startNewChat" class="hide" href="#">Start a new chat</a>
+						{{#if hasChatHistory}}
+							<a id="newChat" href="/chat">New chat</a>
+						{{/if}}
 					</span>
 				</h4>
 				{{> recentchat}}
